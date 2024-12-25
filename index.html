@@ -7,14 +7,20 @@
         <!-- ‼️config here 在这里配置姓名等 -->
         <script>
             /* (字符串)姓名 最多六个字符 不然可能会有点问题 实际上是懒得调样式 如果可以的话可以自己改 */
-            let name = ['唐宇果', '齐洋振'];
-            allindex = 1;
+            let name = ['唐宇果', '齐洋振','肖梓洪','赵斌','创价林'];
+            allindex = name.length-1;
             index = 0;
             /* (URL 字符串)输入一寸照片的 URL，或者是 base64 数组。 */
-            let picture = ["https://i.imgur.com/NUtpLUZ.png,webp","https://i.imgur.com/58n2WST.png,webp"];
+            let picture = ["images/tang.png",
+            "images/qi.png",
+            "images/shit.jpg",
+            "images/pig.jpg",
+            "images/ling.png"];
             reverse_picture_color = false; /* (布尔值)是否将图片反色 *
             /* (字符串)在这里写一些介绍和生前逸事 */
-            let introduction = ["唐宇果为隔壁东方吧的吧主，网名恐怖猫头人，因为过于弱智所以被出道，今已不幸死亡，我们默哀。","齐洋振为一条瞎骂蠢蛆，且被高雅人士骂到自闭，因专升本没考上导致黑化，杀死父母并自杀，悲剧的，，，"];
+            let introduction = ["唐宇果为隔壁东方吧的吧主，网名恐怖猫头人，因为过于弱智所以被出道，今已不幸死亡，我们默哀。",
+            "齐洋振为一条瞎骂蠢蛆，且被高雅人士骂到自闭，因专升本没考上导致黑化，杀死父母并自杀，悲剧的，，，",
+            " "," "," "];
 
 
         </script>
@@ -405,10 +411,14 @@
             gitalk.render('gitalk-container');
 
             document.getElementById("Prev").onclick = function () {
-                if (index != 0) {
+                if (index > 0) {
                     index -= 1;
                 }
-                document.title = name[0] + " 的电子灵堂";
+                else
+                {
+                    index = allindex;
+                }
+                document.title = name[index] + " 的电子灵堂";
                 document.getElementById("title").innerHTML = name[index] + " 的电子灵堂";
                 document.getElementById("dead_nameInSheiwusi").innerHTML = name[index];
                 document.getElementById("Dead_Picture").src = picture[index];
@@ -418,10 +428,15 @@
                 document.getElementById("loading_tips").innerHTML = "马上就好";
             };
             document.getElementById("Next").onclick = function () {
-                if (index != allindex) {
+                if (index < allindex) 
+                {
                     index += 1;
                 }
-                document.title = name[0] + " 的电子灵堂";
+                else
+                {
+                    index = 0;
+                }
+                document.title = name[index] + " 的电子灵堂";
                 document.getElementById("title").innerHTML = name[index] + " 的电子灵堂";
                 document.getElementById("dead_nameInSheiwusi").innerHTML = name[index];
                 document.getElementById("Dead_Picture").src = picture[index];
